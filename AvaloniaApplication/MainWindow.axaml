@@ -1,0 +1,33 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="using:AvaloniaApplication"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaApplication.MainWindow"
+        x:DataType="local:MainWindow"
+        Title="AvaloniaApplication" Width="500" Height="450">
+
+    <Design.DataContext>
+		<local:MainWindow/>
+    </Design.DataContext>
+
+    <Button Width="100" Height="40" Content="Settings" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+        <Button.Flyout>
+            <Flyout Placement="Top" ShowMode="Standard" >
+                <StackPanel Spacing="4">
+                    <Label Content="Theme select binding in xaml:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="ThemeSelect1" ItemsSource="{Binding ThemeVariants}"  SelectionChanged="ThemeSelect1_OnSelectionChanged"
+                              HorizontalAlignment="Center" />
+                    <Label Content="Theme select binding in CodeBehind:" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="ThemeSelect2"  SelectionChanged="ThemeSelect2_OnSelectionChanged"
+                              HorizontalAlignment="Center" />
+                    <Label Content="Default false, triggers on open/close if checked" VerticalAlignment="Center"/>
+                    <CheckBox Content="Option 1" IsChecked="{Binding Option1}" IsCheckedChanged="Option1_OnIsCheckedChanged"/>
+                    <Label Content="Default false, triggers on open/close if unchecked" VerticalAlignment="Center"/>
+                    <CheckBox Content="Option 2" IsChecked="{Binding Option2, FallbackValue=True}" IsCheckedChanged="Option2_OnIsCheckedChanged"/>
+                </StackPanel>
+            </Flyout>
+        </Button.Flyout>
+    </Button>
+</Window>
